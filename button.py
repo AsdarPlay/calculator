@@ -28,7 +28,7 @@ class Button():
         text_rect.center = (self.x + self.width / 2, self.y + self.height / 2)
         screen.blit(text_image, text_rect)
 
-    def draw(self, screen):
+    def draw(self, screen, IsClicked):
         mousePos = pygame.mouse.get_pos()
         if self.x + self.width > mousePos[0] > self.x and self.y + self.height > mousePos[1] > self.y:
             color = self.colorHover

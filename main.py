@@ -16,7 +16,7 @@ screen = pygame.display.set_mode(bounds)
 pygame.display.set_caption('Calculator')
 clock = pygame.time.Clock()
 
-buttons = ['0', ',', '=', '1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '×', 'C', '+/-', '%', '÷']
+buttons = ['0', ',', '=', '1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '×', 'AC', '+/-', '%', '÷']
 buttonsObject = []
 
 i = 1
