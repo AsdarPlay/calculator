@@ -39,4 +39,7 @@ class Button():
         self.draw_text(screen)
 
     def click(self):
-        pass
+        mousePos = pygame.mouse.get_pos()
+        if self.x + self.width > mousePos[0] > self.x and self.y + self.height > mousePos[1] > self.y \
+                and pygame.mouse.get_pressed()[0]:
+            print(self.text)

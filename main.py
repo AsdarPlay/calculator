@@ -16,7 +16,7 @@ screen = pygame.display.set_mode(bounds)
 pygame.display.set_caption('Calculator')
 clock = pygame.time.Clock()
 
-buttons = ['0', ',', '=', '1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '×', 'C', '◄', '%', '÷']
+buttons = ['0', ',', '=', '1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '×', 'C', '+/-', '%', '÷']
 buttonsObject = []
 
 i = 1
@@ -35,17 +35,21 @@ run = True
 
 while run:
     clock.tick(fps)
-
+    IsClicked = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            IsClicked = False
+        if event.type == pygame.MOUSEBUTTONUP:
+            IsClicked = True
 
     screen.fill('#FF8C00')
     pygame.draw.rect(screen, '#000000', (0, 0, 400, 189))
     pygame.draw.rect(screen, '#AFEEEE', (20, 15,320, 155))
 
     for btn in buttonsObject:
-        btn.draw(screen)
+        btn.draw(screen, IsClicked)
 
     pygame.display.flip()
 
