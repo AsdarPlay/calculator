@@ -1,4 +1,6 @@
 import pygame
+import operands
+
 pygame.init()
 class Button():
     color = None
@@ -28,18 +30,24 @@ class Button():
         text_rect.center = (self.x + self.width / 2, self.y + self.height / 2)
         screen.blit(text_image, text_rect)
 
-    def draw(self, screen, IsClicked):
+    def draw(self, screen, IsClicked, mainText):
         mousePos = pygame.mouse.get_pos()
         if self.x + self.width > mousePos[0] > self.x and self.y + self.height > mousePos[1] > self.y:
             color = self.colorHover
-
         else:
             color = self.color
         pygame.draw.rect(screen, color, (self.x, self.y, self.width, self.height))
         self.draw_text(screen)
+        if IsClicked:
+            return self.click(mainText)
 
-    def click(self):
+    def click(self, mainText):
         mousePos = pygame.mouse.get_pos()
         if self.x + self.width > mousePos[0] > self.x and self.y + self.height > mousePos[1] > self.y \
                 and pygame.mouse.get_pressed()[0]:
-            print(self.text)
+            if operands.getTypeCommand(self.text) == 'number':
+                return self.text
+            elif operands.getTypeCommand(self.text) == 'operand':
+                return ['operand', self.text]
+            else:
+                return ['method', self.text]
